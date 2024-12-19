@@ -1,7 +1,19 @@
 const generate = document.getElementById("generate");
 const resetButton = document.getElementById("reset");
 const opacityToggle = document.getElementById("opacityToggle")
+const gridSizeInput = document.getElementById("gridSize");
 let toggle = 0;
+
+gridSizeInput.addEventListener("input", () => {
+let value = parseInt(gridSizeInput.value, 10);
+if (value > 100) {
+    alert("Please enter a number less than or equal to 100.");
+    gridSizeInput.value = 100; 
+} else if (value < 0) {
+    alert("Please enter a positive number.");
+    gridSizeInput.value = "";
+}
+});
 
 function defaultGrid() {
   let container = document.getElementById("container");
@@ -28,7 +40,6 @@ function defaultGrid() {
     container.appendChild(div);
   }
 }
-
 defaultGrid();
 
 generate.addEventListener("click", () => {
